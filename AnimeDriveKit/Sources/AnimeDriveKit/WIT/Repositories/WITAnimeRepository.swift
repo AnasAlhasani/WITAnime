@@ -1,7 +1,7 @@
 import Foundation
 
 public extension AnimeRepository {
-    static func live(apiClient: APIClient = .live) -> Self {
+    static func resolve(apiClient: APIClient = .resolve()) -> Self {
         .init(
             search: { query in
                 try await apiClient

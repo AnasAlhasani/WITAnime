@@ -15,16 +15,16 @@ struct HomeScreen {
     @EnvironmentObject private var router: Router
     @State private var state: ViewState = .loading
     
-    private let repository: AnimeRepository
+    private let latestEpisodesUseCase: LatestEpisodesUseCase
     
-    init(repository: AnimeRepository) {
-        self.repository = repository
+    init(latestEpisodesUseCase: LatestEpisodesUseCase) {
+        self.latestEpisodesUseCase = latestEpisodesUseCase
     }
     
     func loadData() async {
         do {
             state = .loading
-            let episodes = try await repository.latestEpisodes()
+            let episodes = try await latestEpisodesUseCase()
             state = .success(episodes)
         } catch {
             state = .failure(error)
@@ -105,17 +105,17 @@ struct EpisodeScreen {
     @State private var state: ViewState = .loading
     
     private let episode: Episode
-    private let repository: AnimeRepository
+    private let videoLinksUseCase: VideoLinksUseCase
     
-    init(episode: Episode, repository: AnimeRepository) {
+    init(episode: Episode, videoLinksUseCase: VideoLinksUseCase) {
         self.episode = episode
-        self.repository = repository
+        self.videoLinksUseCase = videoLinksUseCase
     }
     
     func loadLinks() async {
         do {
             state = .loading
-            let links = try await repository.videoLinks(episode.id)
+            let links = try await videoLinksUseCase(input: episode.id)
             state = .success(links)
         } catch {
             state = .failure(error)

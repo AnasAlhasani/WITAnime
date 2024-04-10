@@ -5,7 +5,7 @@ public struct APIClient {
 }
 
 extension APIClient {
-    public static var live: Self {
+    public static func resolve() -> Self {
         .init {
             let (data, _) = try await URLSession.shared.data(from: $0)
             return data

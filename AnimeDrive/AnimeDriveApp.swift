@@ -27,16 +27,15 @@ final class Router: ObservableObject {
 struct AnimeDriveApp: App {
     @StateObject 
     private var router = Router()
-    private let repository = AnimeRepository.live()
     
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.path) {
-                HomeScreen(repository: repository)
+                HomeScreen(latestEpisodesUseCase: .resolve())
                     .navigationDestination(for: Route.self) { route in
                         switch route {
                         case let .episode(episode):
-                            EpisodeScreen(episode: episode, repository: repository)
+                            EpisodeScreen(episode: episode, videoLinksUseCase: .resolve())
                         case let .video(link):
                             VideoPlayer(player: .init(url: link.url))
                         }
