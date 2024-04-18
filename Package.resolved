@@ -1,0 +1,24 @@
+{
+  "originHash" : "2aa9f6ea553e438513e1ef6e327a4cb690bea693a473e6ceaff831752a11005e",
+  "pins" : [
+    {
+      "identity" : "swift-tagged",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-tagged.git",
+      "state" : {
+        "revision" : "3907a9438f5b57d317001dc99f3f11b46882272b",
+        "version" : "0.10.0"
+      }
+    },
+    {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scinfu/SwiftSoup.git",
+      "state" : {
+        "revision" : "028487d4a8a291b2fe1b4392b5425b6172056148",
+        "version" : "2.7.2"
+      }
+    }
+  ],
+  "version" : 3
+}
